@@ -1,0 +1,20 @@
+[Unit]
+Description=A Demo web server. 
+ConditionPathExists=/usr/local/aws-demo-webserver/server
+After=syslog.target
+After=network.target
+ 
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+LimitNOFILE=1024
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+Restart=on-failure
+RestartSec=2
+WorkingDirectory=/usr/local/aws-demo-webserver/
+ExecStart=/usr/local/aws-demo-webserver/server
+
+ 
+[Install]
+WantedBy=multi-user.target
