@@ -58,5 +58,8 @@ func main() {
 	parseFlag()
 	setHostName()
 	http.HandleFunc("/", hostNameServer)
-	http.ListenAndServe(":80", nil)
+	err := http.ListenAndServe(":80", nil)
+	if err != nil {
+		log.Println(err)
+	}
 }
